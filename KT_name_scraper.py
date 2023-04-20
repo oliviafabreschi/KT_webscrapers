@@ -9,14 +9,14 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-# UrL example for nodes: https://kt.cern/node/1699
+# Example url for nodes: https://kt.cern/node/4577
 # 1250 = min node for active page content
 # 4940 = max number of nodes on site as of April 2023
-# node 4577 as test (known page with contact person and tech)
 
-# minimum nr
-nodeNumber = 4900
-# max to search to
+
+# minimum nr - to be changed
+nodeNumber = 4780
+# max to search to - to be changed
 nodeNumberMax = 4920
 
 # lists to add to
@@ -43,7 +43,7 @@ def makecsv():
         for row in KTOperPage:
             writer.writerow(row)
 
-#function to get the UL using beautiful soup
+#function to get the UrL using beautiful soup
 def geturl():
 
         # finding all url alternative names to get page category via head location
@@ -54,7 +54,6 @@ def geturl():
         for loc in urlNameAlts:
 
                 urlNameAlt = loc['href'].split("/")[3]  # extract the href attribute value
-                print(urlNameAlt)
                 # append urlCategory
                 urlCategory.append(urlNameAlt)
 
@@ -97,8 +96,14 @@ def getname(lines):
                         if page_text is not None:
                             page_text = str(page_text)
                             nameKTO = page_text.split("/")[2].split('"')[0].replace("-", " ")
-                            print(nameKTO)
+
+                            # fixing bug for certain tags
+                            if nameKTO == "1955":
+                                nameKTO = "Alessandro Raimondo"
+                            print(f"name on page: {nameKTO}")
                             name_list.append(nameKTO)
+
+
 
                         else:
                             if name_list:
@@ -141,6 +146,7 @@ try:
                     techName = soup.body.find(
                         class_="field field--name-node-title field--type-ds field--label-hidden field--item").find(
                         "h2").get_text().replace('\n', '').strip()
+                    print(techName)
                 except:
                     techName = "undefined"
 
