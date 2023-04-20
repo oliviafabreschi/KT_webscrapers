@@ -14,9 +14,9 @@ import csv
 # 4940 = max number of nodes on site as of April 2023
 
 
-# minimum nr - to be changed
+# min node nr: to be changed based on desired search range
 nodeNumber = 4780
-# max to search to - to be changed
+# max node nr: to be changed based on desired search range
 nodeNumberMax = 4920
 
 # lists to add to

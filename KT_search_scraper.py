@@ -12,9 +12,9 @@ import csv
 # input the word you want to search the website for
 searched_word = input("Enter word you want to search, not case sensitive: ").strip()
 
-# min node nr -> to be changed based on desired range
+# min node nr: to be changed based on desired search range
 nodeNumber = 3320
-# max node nr -> to be changed based on desired range
+# max node nr: to be changed based on desired search range
 nodeNumberMax = 3420
 
 # lists to add
