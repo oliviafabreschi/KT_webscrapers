@@ -6,16 +6,16 @@ from bs4 import BeautifulSoup
 import re
 import csv
 # Example url for nodes: https://kt.cern/node/4577
-# 4930 = max number of nodes on site as of March 2023
+# 4940 = max number of nodes on site as of April 2023
 # 3422 = broken node
 
 # input the word you want to search the website for
 searched_word = input("Enter word you want to search, not case sensitive: ").strip()
 
 # min node nr -> 1200 if you want to search whole website
-nodeNumber = 3421
+nodeNumber = 3320
 # max node nr -> 5000
-nodeNumberMax = 3500
+nodeNumberMax = 3420
 
 # lists to add
 word_list = []
@@ -45,12 +45,13 @@ for nodeNumber in range(nodeNumber, nodeNumberMax+1):
                     print(sentences)
                     # sentence list
                     sentence_list.append(sentences)
+                    # node list
                     node_list.append(nodeNumber)
                     # adding url to list
                     url_List.append(url)
-                    #     add searched name to list
+                    # add searched name to list
                     word_list.append(searched_word)
-            # adding node numbers to list to be able to find them
+
 
         # combining lists
         fullList = list(zip(node_list, url_List, word_list, sentence_list))

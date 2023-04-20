@@ -11,9 +11,8 @@ import csv
 
 # UrL example for nodes: https://kt.cern/node/1699
 # 1250 = min node for active page content
-# 4930 = max number of nodes on site as of March 2023
+# 4940 = max number of nodes on site as of April 2023
 # node 4577 as test (known page with contact person and tech)
-
 
 # minimum nr
 nodeNumber = 4900
