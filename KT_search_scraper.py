@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import re
 import csv
 # Example url for nodes: https://kt.cern/node/4577
+# 1250 = min number for relevant content on site as of April 2023
 # 4940 = max number of nodes on site as of April 2023
 # 3422 = broken node
 

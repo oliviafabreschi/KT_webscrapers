@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 import csv
 
 # Example url for nodes: https://kt.cern/node/4577
-# 1250 = min node for active page content
+# 1250 = min number for relevant content on site as of April 2023
 # 4940 = max number of nodes on site as of April 2023
 
 
@@ -155,7 +155,7 @@ try:
 except:
     pass
 
-# printing out results for final reference
+# printing out results for final reference - data sense check
 print(len(node_list))
 print(node_list)
 print(len(name_list))
