@@ -37,7 +37,7 @@ def makecsv():
         writer = csv.writer(csvfile)
 
         # write the header row
-        writer.writerow(['Node Number', 'KTO Name', "technology name", "link to page", "Page category"])
+        writer.writerow(['Node number', 'Contact name', "technology name", "link to page", "Page category"])
 
         # write each tuple as a row in the CSV file
         for row in KTOperPage:

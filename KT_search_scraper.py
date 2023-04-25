@@ -67,7 +67,7 @@ with open('search_word_results.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
 
     # write the header row
-    writer.writerow(['Node Number', "link to page", "search word", "sentence"])
+    writer.writerow(['Node number', "link to page", "searched word", "sentence extract"])
 
     # write each tuple as a row in the CSV file
     for row in fullList:
