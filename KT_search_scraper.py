@@ -14,9 +14,9 @@ import csv
 searched_word = input("Enter word you want to search, not case sensitive: ").strip()
 
 # min node nr: to be changed based on desired search range
-nodeNumber = 3320
+nodeNumber = 3907
 # max node nr: to be changed based on desired search range
-nodeNumberMax = 3420
+nodeNumberMax = 4200
 
 # lists to add
 word_list = []
@@ -24,6 +24,9 @@ node_list = []
 url_List = []
 sentence_list = []
 fullList = []
+urlCategory = []
+urlNameAlt = ""
+
 
 for nodeNumber in range(nodeNumber, nodeNumberMax+1):
     try:
@@ -37,6 +40,17 @@ for nodeNumber in range(nodeNumber, nodeNumberMax+1):
         items = soup.body.find_all(string=pattern, recursive=True)
         # Find all <p> elements that contain the searched word
         if len(items) != 0:
+            try:
+                urlNameAlts = soup.head.find_all("link", rel="alternate")
+            except:
+                pass
+            # getting the alternative url link for clearer page name
+            for loc in urlNameAlts:
+                # urlNameAlt = loc['href'].split("/")[1:-1]  # extract the href attribute value
+                urlNameAlt = loc['href'][:]  # extract the href attribute value
+                print(urlNameAlt)
+                # append urlCategory
+                urlCategory.append(urlNameAlt)
             # if finding all paragraphs:
             paragraphs = soup.find_all("p")
             # finding and printing sentences mentioning the word
@@ -55,7 +69,7 @@ for nodeNumber in range(nodeNumber, nodeNumberMax+1):
 
 
         # combining lists
-        fullList = list(zip(node_list, url_List, word_list, sentence_list))
+        fullList = list(zip(node_list, url_List, word_list, sentence_list, urlCategory))
 
     except:
         pass
@@ -67,7 +81,7 @@ with open('search_word_results.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
 
     # write the header row
-    writer.writerow(['Node number', "link to page", "searched word", "sentence extract"])
+    writer.writerow(['Node number', "link to page", "searched word", "sentence extract", "urlCategory"])
 
     # write each tuple as a row in the CSV file
     for row in fullList:
